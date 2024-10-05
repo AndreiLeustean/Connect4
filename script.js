@@ -1,10 +1,10 @@
 let turn = 0;
 const redMoves = [];
 const yellowMoves = [];
-const MAXNEIGHBOR = 4;
-const ROWSNUMBER = 6;
-const COLUMNSNUMBER = 7;
-const MOVESNUMBER = 42;
+const MAX_NEIGHBOR = 4;
+const ROWS_NUMBER = 6;
+const COLUMNS_NUMBER = 7;
+const MOVES_NUMBER = 42;
 
 function changeColorCircle(idCircle) {
     if (turn % 2 === 0) {
@@ -26,19 +26,19 @@ function checkDirection(array, move, step) {
     let count = 1;
     for (let i = move + step; array.includes[i]; i += step) {
         ++count;
-        if (count === MAXNEIGHBOR) {
+        if (count === MAX_NEIGHBOR) {
             return true;
         }
     }
     for (let i = move - step; array.includes(i); i -= step) {
         ++count;
-        if (count === MAXNEIGHBOR) {
+        if (count === MAX_NEIGHBOR) {
             return true;
         }
     }
 }
 
-function winner(array) {// trebuie modificat
+function winner(array) {
     let len = array.length;
     for (let i = 0; i < len; ++i) {
         let move = array[i];
@@ -52,10 +52,10 @@ function winner(array) {// trebuie modificat
 }
 
 function findFreeCircle(arrowNumber) {
-    let lastCircle = ROWSNUMBER * COLUMNSNUMBER - 1 - (COLUMNSNUMBER - arrowNumber);
-    for (let i = 0; i < ROWSNUMBER; ++i) {
+    let lastCircle = ROWS_NUMBER * COLUMNS_NUMBER - 1 - (COLUMNS_NUMBER - arrowNumber);
+    for (let i = 0; i < ROWS_NUMBER; ++i) {
         if (i > 0) {
-            lastCircle -= COLUMNSNUMBER;
+            lastCircle -= COLUMNS_NUMBER;
         }
         let idCircle = "box" + lastCircle;
         if (document.getElementById(idCircle).style.backgroundColor === "" ||
@@ -104,13 +104,10 @@ document.querySelectorAll('.triangle-down').forEach(function (arrow) {
         if (winner(redMoves)) {
             showMessageWins("message-WinRed", "redWin");
         }
-        if (turn === MOVESNUMBER) {
+        if (turn === MOVES_NUMBER) {
             showMessageWins("message-Equal", "equal");
         }
     });
 });
-
-
-
 
 
