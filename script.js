@@ -1,6 +1,10 @@
 let turn = 0;
 const redMoves = [];
 const yellowMoves = [];
+const MAXNEIGHBOR = 4;
+const ROWSNUMBER = 6;
+const COLUMNSNUMBER = 7;
+const MOVESNUMBER = 42;
 
 function changeColorCircle(idCircle) {
     if (turn % 2 === 0) {
@@ -22,13 +26,13 @@ function checkDirection(array, move, step) {
     let count = 1;
     for (let i = move + step; array.includes[i]; i += step) {
         ++count;
-        if (count === 4) {
+        if (count === MAXNEIGHBOR) {
             return true;
         }
     }
     for (let i = move - step; array.includes(i); i -= step) {
         ++count;
-        if (count === 4) {
+        if (count === MAXNEIGHBOR) {
             return true;
         }
     }
@@ -58,12 +62,12 @@ function findFreeCircle(arrowNumber) {
         [40, 33, 26, 19, 12, 5],
         [41, 34, 27, 20, 13, 6]
     ];
-    for (let i = 0; i < 7; ++i) {
+    for (let i = 0; i < COLUMNSNUMBER; ++i) {
         if (arrowNumber === i + 1) {
             array = matrix[i];
         }
     }
-    for (let i = 0; i < 6; ++i) {
+    for (let i = 0; i < ROWSNUMBER; ++i) {
         let idCircle = "box" + array[i];
         if (document.getElementById(idCircle).style.backgroundColor === "" ||
             document.getElementById(idCircle).style.backgroundColor === "#EFE2BA") {
@@ -110,7 +114,7 @@ document.querySelectorAll('.triangle-down').forEach(function (arrow) {
         if (winner(redMoves)) {
             showMessageWins("message-WinRed", "redWin");
         }
-        if (turn === 42) {
+        if (turn === MOVESNUMBER) {
             showMessageWins("message-Equal", "equal");
         }
     });
