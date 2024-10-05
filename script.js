@@ -52,28 +52,6 @@ function winner(array) {// trebuie modificat
 }
 
 function findFreeCircle(arrowNumber) {
-    // let array;
-    // let matrix = [
-    //     [35, 28, 21, 14, 7, 0],
-    //     [36, 29, 22, 15, 8, 1],
-    //     [37, 30, 23, 16, 9, 2],
-    //     [38, 31, 24, 17, 10, 3],
-    //     [39, 32, 25, 18, 11, 4],
-    //     [40, 33, 26, 19, 12, 5],
-    //     [41, 34, 27, 20, 13, 6]
-    // ];
-    // array = matrix[arrowNumber - 1];
-    // for (let i = 0; i < ROWSNUMBER; ++i) {
-    //     let idCircle = "box" + array[i];
-    //     if (document.getElementById(idCircle).style.backgroundColor === "" ||
-    //         document.getElementById(idCircle).style.backgroundColor === "#EFE2BA") {
-    //         changeColorCircle(idCircle);
-    //         addMovesByColor(turn, array[i]);
-    //         ++turn;
-    //         setUsersMovementText(turn);
-    //         break;
-    //     }
-    // }
     let lastCircle = ROWSNUMBER * COLUMNSNUMBER - 1 - (COLUMNSNUMBER - arrowNumber);
     for (let i = 0; i < ROWSNUMBER; ++i) {
         if (i > 0) {
@@ -83,12 +61,12 @@ function findFreeCircle(arrowNumber) {
         if (document.getElementById(idCircle).style.backgroundColor === "" ||
             document.getElementById(idCircle).style.backgroundColor === "#EFE2BA") {
             changeColorCircle(idCircle);
+            addMovesByColor(turn, lastCircle);
             console.log(lastCircle);
             ++turn;
             setUsersMovementText(turn);
             break;
         }
-
     }
 }
 
