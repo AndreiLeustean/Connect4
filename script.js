@@ -6,6 +6,26 @@ const ROWS_NUMBER = 6;
 const COLUMNS_NUMBER = 7;
 const MOVES_NUMBER = 42;
 
+function createCircleElement(circlesNumber) {
+    for (let i = 0; i < circlesNumber; ++i) {
+        var circle = document.createElement("div");
+        circle.classList.add("circle");
+        circle.setAttribute("id", "box" + i);
+        var boxes = document.getElementById("boxes");
+        boxes.appendChild(circle);
+    }
+}
+
+function createArrowsElement(arrowsNumber) {
+    for (let i = 1; i <= arrowsNumber; ++i) {
+        var arrow = document.createElement("div");
+        arrow.classList.add("triangle-down");
+        arrow.setAttribute("id", "arrow" + i);
+        var arrows = document.getElementById("arrows");
+        arrows.appendChild(arrow);
+    }
+}
+
 function changeColorCircle(idCircle) {
     if (turn % 2 === 0) {
         document.getElementById(idCircle).style.backgroundColor = "red";
@@ -92,6 +112,9 @@ function showMessageWins(messageID, buttonID) {
         });
     });
 }
+
+createCircleElement(MOVES_NUMBER);
+createArrowsElement(COLUMNS_NUMBER);
 
 document.querySelectorAll('.triangle-down').forEach(function (arrow) {
     arrow.addEventListener('click', function (event) {
