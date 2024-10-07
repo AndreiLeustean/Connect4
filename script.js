@@ -8,20 +8,20 @@ const MOVES_NUMBER = 42;
 
 function createCircleElement(circlesNumber) {
     for (let i = 0; i < circlesNumber; ++i) {
-        var circle = document.createElement("div");
+        let circle = document.createElement("div");
         circle.classList.add("circle");
         circle.setAttribute("id", "box" + i);
-        var boxes = document.getElementById("boxes");
+        let boxes = document.getElementById("boxes");
         boxes.appendChild(circle);
     }
 }
 
 function createArrowsElement(arrowsNumber) {
     for (let i = 1; i <= arrowsNumber; ++i) {
-        var arrow = document.createElement("div");
+        let arrow = document.createElement("div");
         arrow.classList.add("triangle-down");
         arrow.setAttribute("id", "arrow" + i);
-        var arrows = document.getElementById("arrows");
+        let arrows = document.getElementById("arrows");
         arrows.appendChild(arrow);
     }
 }
